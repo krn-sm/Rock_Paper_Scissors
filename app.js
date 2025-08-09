@@ -13,18 +13,24 @@ const genCompChoice = () => {
 }
 
 const drawGame = () => {
-    msg.innerText = "Draw! Play again";
+    msg.innerText = "Draw!";
     msg.style.backgroundColor = "gray";
 }
 
 const showWinner = (userWin, userChoice, compChoice) => {
     if(userWin) {
         userScore++;
+        if (userScore === 10) {
+    gameOver("user");
+    return;} 
         userScoreP.innerText = userScore;
         msg.innerText = `You win! Your ${userChoice} beats ${compChoice}`;
         msg.style.backgroundColor = "green";
     } else {
         compScore++;
+        if (compScore === 10) {
+    gameOver("comp");
+return;}
         compScoreP.innerText = compScore;
         msg.innerText = `You lose! ${compChoice} beats your ${userChoice}`;
         msg.style.backgroundColor = "red";
@@ -58,4 +64,18 @@ choices.forEach((choice) => {
         game(userChoice);
   });
 });
+
+function gameOver(winner) {
+    document.body.style.backgroundColor = winner === "user" ? "green" : "red";
+    document.body.innerHTML = `<div class = "game-over">
+    <h1>${winner === "user" ? "You Won!" : "You Lost!"}</h1>
+    <h2>Game Over</h2>
+    <button id ="restart">Play Again</button>
+    </div>
+    `;
+    document.getElementById("restart").addEventListener("click", () => {
+    location.reload();
+}
+);
+}
 
