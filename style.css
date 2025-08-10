@@ -3,6 +3,26 @@
     padding: 0;
     text-align: center;
 }
+body {
+  margin: 0;
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("RPS.png") center/cover no-repeat;
+  filter: blur(10px);
+  z-index: -1;
+}
+
 
 h1{
     background-color: #1e1414;
@@ -83,7 +103,7 @@ img:hover{
 }
 .game-over h1 {
 font-size: 5rem;
-color: white;
+color: black;
 text-align: center;
 justify-content: center;
 animation: popIn 0.6s ease-out, pulse 1.5s infinite;
@@ -106,7 +126,7 @@ background-color: transparent;
     padding: 12px 25px;
     font-size: 1.2rem;
     background: white;
-    border: none;
+    border: 2px solid #1e1414;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -115,4 +135,5 @@ background-color: transparent;
     transform: scale(1.1);
     background-color: #1e1414;
     color: white;
+    border: 2px solid white;
 }
